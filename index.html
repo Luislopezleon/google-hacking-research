@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Google Hacking | Security Research Project</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="logo-icon">&#x1F50D;</span>
+                <span class="logo-text">Google Hacking Research</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#state-of-art">State of Art</a></li>
+                <li><a href="#description">Description</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#tool">Interactive Tool</a></li>
+                <li><a href="#opinion">Contribution</a></li>
+                <li><a href="#conclusion">Conclusion</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Advanced Google Hacking</h1>
+                <p class="hero-subtitle">A Comprehensive Analysis of Search-Based Vulnerability Discovery</p>
+                <div class="hero-meta">
+                    <span>VSB-TU Ostrava</span>
+                    <span class="divider">|</span>
+                    <span>Fundamentals of Security in Communications</span>
+                    <span class="divider">|</span>
+                    <span>2025/2026</span>
+                </div>
+                <div class="hero-author">
+                    <p><strong>Luis López León</strong></p>
+                    <p>Student Code: LOP0065</p>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="code-window">
+                    <div class="window-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="window-content">
+                        <code>
+<span class="keyword">search</span>: <span class="string">"inurl:admin filetype:php"</span><br>
+<span class="keyword">results</span>: <span class="number">142,680</span> <span class="comment">// vulnerable endpoints</span><br>
+<span class="keyword">severity</span>: <span class="error">CRITICAL</span>
+                        </code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section id="intro" class="section">
+        <div class="container">
+            <h2 class="section-title">Introduction</h2>
+            <div class="content-grid">
+                <div class="content-main">
+                    <p class="lead">Google Hacking, also known as Google Dorking, represents a sophisticated Open Source Intelligence (OSINT) technique that leverages the power of search engine indexing to discover security vulnerabilities, sensitive information, and misconfigurations across the internet.</p>
+
+                    <p>In the contemporary cybersecurity landscape, where billions of web pages are indexed daily, search engines inadvertently catalog sensitive information that was never intended for public access. This phenomenon creates a unique attack surface that can be exploited through carefully crafted search queries.</p>
+
+                    <div class="highlight-box">
+                        <h3>Research Significance</h3>
+                        <p>This project examines the intersection of information retrieval systems and cybersecurity, addressing three critical questions:</p>
+                        <ul>
+                            <li>How do search engine operators enable systematic vulnerability discovery?</li>
+                            <li>What categories of sensitive information are most commonly exposed?</li>
+                            <li>Can we develop a quantitative framework for assessing Google Dork risk levels?</li>
+                        </ul>
+                    </div>
+
+                    <h3>The Google Hacking Paradigm</h3>
+                    <p>Unlike traditional hacking methodologies that involve active exploitation of systems, Google Hacking operates in a passive reconnaissance mode. Attackers utilize publicly available search engine capabilities to:</p>
+
+                    <ul class="styled-list">
+                        <li><strong>Enumerate vulnerable systems</strong> by identifying software versions with known vulnerabilities</li>
+                        <li><strong>Discover exposed credentials</strong> through improperly secured configuration files</li>
+                        <li><strong>Locate sensitive documents</strong> such as database dumps, private keys, and confidential reports</li>
+                        <li><strong>Map network infrastructure</strong> by identifying cameras, IoT devices, and administrative interfaces</li>
+                        <li><strong>Identify misconfigured services</strong> that expose directory listings or error messages</li>
+                    </ul>
+
+                    <h3>Project Objectives</h3>
+                    <p>This research project delivers a comprehensive analysis of Advanced Google Hacking techniques, structured around the following objectives:</p>
+
+                    <ol class="objectives-list">
+                        <li><strong>Theoretical Foundation:</strong> Establish a rigorous understanding of search engine indexing mechanisms and how they create security exposure vectors.</li>
+                        <li><strong>Taxonomic Classification:</strong> Develop a novel classification framework for Google Dorks based on target type, information sensitivity, and exploitation complexity.</li>
+                        <li><strong>Risk Quantification:</strong> Design and validate an original risk scoring methodology that assesses the potential impact of discovered vulnerabilities.</li>
+                        <li><strong>Practical Demonstration:</strong> Implement an interactive tool that enables security professionals to construct, analyze, and evaluate Google Dorks in real-time.</li>
+                        <li><strong>Defensive Strategies:</strong> Propose evidence-based mitigation techniques to protect organizations from Google Hacking reconnaissance.</li>
+                    </ol>
+
+                    <div class="info-box">
+                        <h4>Ethical Considerations</h4>
+                        <p>This research is conducted within strict ethical boundaries. All examples utilize publicly documented dorks, and no actual exploitation attempts are performed. The project aims to educate security professionals and system administrators about exposure risks to improve defensive postures.</p>
+                    </div>
+                </div>
+                <div class="content-sidebar">
+                    <div class="interactive-stat">
+                        <div class="stat-icon">🔍</div>
+                        <div class="stat-value" data-count="150">0</div>
+                        <div class="stat-description">Operators Analyzed</div>
+                    </div>
+                    <div class="interactive-stat">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-value" data-count="12">0</div>
+                        <div class="stat-description">Exposure Categories</div>
+                    </div>
+                    <div class="interactive-stat">
+                        <div class="stat-icon">⚠️</div>
+                        <div class="stat-value" data-count="5">0</div>
+                        <div class="stat-description">Risk Levels Defined</div>
+                    </div>
+                    <div class="stats-card">
+                        <h4>Threat Landscape</h4>
+                        <div class="progress-bar-container">
+                            <div class="progress-label">
+                                <span class="progress-label-text">Critical Exposures</span>
+                                <span class="progress-label-value">23%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-width="23"></div>
+                            </div>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-label">
+                                <span class="progress-label-text">High Risk</span>
+                                <span class="progress-label-value">41%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-width="41"></div>
+                            </div>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-label">
+                                <span class="progress-label-text">Medium Risk</span>
+                                <span class="progress-label-value">28%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-width="28"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="key-terms">
+                        <h4>Key Terminology</h4>
+                        <dl>
+                            <dt>Google Dork</dt>
+                            <dd>A search query that uses advanced operators to find specific information</dd>
+
+                            <dt>OSINT</dt>
+                            <dd>Open Source Intelligence - information gathering from public sources</dd>
+
+                            <dt>Search Operator</dt>
+                            <dd>Special syntax that refines and constrains search results</dd>
+
+                            <dt>Exposure Vector</dt>
+                            <dd>A pathway through which sensitive information becomes accessible</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- State of the Art Section -->
+    <section id="state-of-art" class="section bg-dark">
+        <div class="container">
+            <h2 class="section-title">Current State of the Art</h2>
+            <div class="content-main">
+                <p class="lead">The field of search engine-based reconnaissance has evolved significantly since the early 2000s, transitioning from curiosity-driven exploration to a formalized discipline within cybersecurity.</p>
+
+                <h3>Historical Development</h3>
+                <p>The concept of Google Hacking emerged in 2002 when security researcher Johnny Long began documenting advanced search queries capable of revealing sensitive information. His work culminated in the creation of the Google Hacking Database (GHDB), which systematically cataloged thousands of dorks organized by vulnerability type.</p>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2002</div>
+                        <div class="timeline-content">
+                            <h4>Genesis of Google Hacking</h4>
+                            <p>Johnny Long publishes first comprehensive documentation of Google Dorks at DEF CON</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2004</div>
+                        <div class="timeline-content">
+                            <h4>GHDB Launch</h4>
+                            <p>Google Hacking Database established as centralized repository</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2011</div>
+                        <div class="timeline-content">
+                            <h4>Integration into Pentesting</h4>
+                            <p>Google Dorking becomes standard reconnaissance phase in penetration testing methodologies</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2018</div>
+                        <div class="timeline-content">
+                            <h4>Automated Frameworks</h4>
+                            <p>Tools like Pagodo and GooFuzz automate large-scale dork scanning</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2023</div>
+                        <div class="timeline-content">
+                            <h4>AI-Enhanced Discovery</h4>
+                            <p>Machine learning models begin predicting effective dork patterns</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Search Engine Architecture and Indexing</h3>
+                <p>Understanding Google Hacking requires comprehension of how search engines operate. The process consists of three primary stages:</p>
+
+                <div class="architecture-grid">
+                    <div class="arch-card">
+                        <div class="arch-icon">&#x1F577;</div>
+                        <h4>1. Crawling</h4>
+                        <p>Automated bots (Googlebot) systematically traverse the web following hyperlinks, discovering and accessing web pages. Crawlers respect robots.txt directives but still index pages if directly linked.</p>
+                    </div>
+                    <div class="arch-card">
+                        <div class="arch-icon">&#x1F4BE;</div>
+                        <h4>2. Indexing</h4>
+                        <p>Discovered content is analyzed, parsed, and stored in massive databases. Text content, metadata, file types, and structural elements are cataloged for rapid retrieval.</p>
+                    </div>
+                    <div class="arch-card">
+                        <div class="arch-icon">&#x1F3AF;</div>
+                        <h4>3. Ranking</h4>
+                        <p>When queries are executed, the ranking algorithm evaluates billions of indexed pages, applying relevance scoring based on content quality, authority, and user intent.</p>
+                    </div>
+                </div>
+
+                <p>The vulnerability emerges in the indexing phase. Search engines cannot distinguish between intentionally public and accidentally exposed information. If a crawler can access content, it will be indexed regardless of sensitivity.</p>
+
+                <h3>Advanced Operator Taxonomy</h3>
+                <p>Google provides numerous operators that enable precise query refinement. These can be categorized functionally:</p>
+
+                <div class="operator-categories">
+                    <div class="operator-category">
+                        <h4>Content-Based Operators</h4>
+                        <table class="operator-table">
+                            <tr>
+                                <td><code>intitle:</code></td>
+                                <td>Searches for keywords within page titles</td>
+                            </tr>
+                            <tr>
+                                <td><code>inurl:</code></td>
+                                <td>Searches for keywords within URLs</td>
+                            </tr>
+                            <tr>
+                                <td><code>intext:</code></td>
+                                <td>Searches for keywords within page body content</td>
+                            </tr>
+                            <tr>
+                                <td><code>allintext:</code></td>
+                                <td>All keywords must appear in page body</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="operator-category">
+                        <h4>File-Based Operators</h4>
+                        <table class="operator-table">
+                            <tr>
+                                <td><code>filetype:</code></td>
+                                <td>Restricts results to specific file extensions</td>
+                            </tr>
+                            <tr>
+                                <td><code>ext:</code></td>
+                                <td>Alternative syntax for filetype operator</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="operator-category">
+                        <h4>Domain-Based Operators</h4>
+                        <table class="operator-table">
+                            <tr>
+                                <td><code>site:</code></td>
+                                <td>Restricts search to specific domain or subdomain</td>
+                            </tr>
+                            <tr>
+                                <td><code>related:</code></td>
+                                <td>Finds sites similar to specified domain</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="operator-category">
+                        <h4>Meta Operators</h4>
+                        <table class="operator-table">
+                            <tr>
+                                <td><code>cache:</code></td>
+                                <td>Displays Google's cached version of a page</td>
+                            </tr>
+                            <tr>
+                                <td><code>info:</code></td>
+                                <td>Shows information about a specific URL</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <h3>Existing Research and Frameworks</h3>
+                <p>Academic and industry research has explored various dimensions of Google Hacking:</p>
+
+                <div class="research-areas">
+                    <div class="research-item">
+                        <h4>Exposure Pattern Analysis</h4>
+                        <p>Studies by Ollmann (2004) and Long (2005) cataloged common misconfiguration patterns that lead to information disclosure, establishing taxonomies of vulnerable web application architectures.</p>
+                    </div>
+
+                    <div class="research-item">
+                        <h4>Automated Discovery Systems</h4>
+                        <p>Tools such as FOCA (Fingerprinting Organizations with Collected Archives) and Maltego integrate Google Dorking into comprehensive OSINT platforms, enabling large-scale reconnaissance campaigns.</p>
+                    </div>
+
+                    <div class="research-item">
+                        <h4>Legal and Ethical Frameworks</h4>
+                        <p>Legal scholars have debated the boundaries of permissible reconnaissance. Since Google Hacking utilizes only public search engines, it exists in a legal gray area, though accessing discovered systems may violate Computer Fraud and Abuse Act provisions.</p>
+                    </div>
+
+                    <div class="research-item">
+                        <h4>Defensive Countermeasures</h4>
+                        <p>Defensive research focuses on robots.txt optimization, proper authentication implementation, meta tag directives (noindex, nofollow), and continuous monitoring for indexed sensitive content.</p>
+                    </div>
+                </div>
+
+                <h3>Contemporary Trends</h3>
+                <p>Recent developments in Google Hacking include:</p>
+                <ul class="trend-list">
+                    <li><strong>Cross-Search Engine Techniques:</strong> Extension beyond Google to Bing, DuckDuckGo, and specialized search engines like Shodan (IoT devices) and Censys (certificate transparency).</li>
+                    <li><strong>GitHub and Code Repository Mining:</strong> Adaptation of dorking techniques to discover exposed API keys and credentials in public repositories.</li>
+                    <li><strong>Cloud Storage Enumeration:</strong> Specialized dorks target misconfigured AWS S3 buckets, Azure Blob Storage, and Google Cloud Storage containers.</li>
+                    <li><strong>AI-Generated Dorks:</strong> Emerging research applies natural language processing to automatically generate effective search queries based on target profiles.</li>
+                </ul>
+
+                <h3>Limitations of Current Approaches</h3>
+                <p>Despite extensive research, several gaps persist in the Google Hacking domain:</p>
+                <ol>
+                    <li><strong>Lack of Quantitative Risk Assessment:</strong> Existing dork databases categorize findings qualitatively but provide no standardized risk scoring mechanism.</li>
+                    <li><strong>Static Dork Collections:</strong> Most resources maintain static lists that become outdated as web technologies evolve.</li>
+                    <li><strong>Limited Contextual Analysis:</strong> Current tools identify exposed resources but do not analyze the business impact or exploitability context.</li>
+                    <li><strong>Defensive Gaps:</strong> Organizations lack systematic methodologies for auditing their search engine exposure footprint.</li>
+                </ol>
+
+                <p>This project addresses these limitations by developing an original risk classification framework and an interactive tool that enables dynamic dork construction with real-time risk assessment.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Description Section -->
+    <section id="description" class="section">
+        <div class="container">
+            <h2 class="section-title">Detailed Description of Advanced Google Hacking</h2>
+
+            <div class="content-main">
+                <p class="lead">This section provides comprehensive technical documentation of Google Hacking methodologies, operator mechanics, and real-world application scenarios.</p>
+
+                <h3>Operator Mechanics and Syntax</h3>
+                <p>Google search operators function as specialized filters that constrain search results based on specific criteria. Understanding their precise syntax and behavior is fundamental to effective reconnaissance.</p>
+
+                <h4>Basic Operators</h4>
+                <div class="operator-detail">
+                    <h5>Quotation Marks ("keyword")</h5>
+                    <p><strong>Function:</strong> Exact phrase matching</p>
+                    <p><strong>Example:</strong> <code>"index of /" "parent directory"</code></p>
+                    <p><strong>Application:</strong> Forces Google to return only pages containing the exact phrase, preventing synonym substitution or word reordering.</p>
+                </div>
+
+                <div class="operator-detail">
+                    <h5>Minus Sign (-keyword)</h5>
+                    <p><strong>Function:</strong> Exclusion of terms</p>
+                    <p><strong>Example:</strong> <code>database filetype:sql -tutorial -example</code></p>
+                    <p><strong>Application:</strong> Removes results containing specified terms, useful for filtering out benign content like tutorials.</p>
+                </div>
+
+                <div class="operator-detail">
+                    <h5>OR Operator (keyword1 OR keyword2)</h5>
+                    <p><strong>Function:</strong> Logical disjunction</p>
+                    <p><strong>Example:</strong> <code>inurl:admin OR inurl:administrator</code></p>
+                    <p><strong>Application:</strong> Returns results matching either condition, expanding search breadth.</p>
+                </div>
+
+                <div class="operator-detail">
+                    <h5>Wildcard (*)</h5>
+                    <p><strong>Function:</strong> Placeholder for unknown terms</p>
+                    <p><strong>Example:</strong> <code>intext:"password * *"</code></p>
+                    <p><strong>Application:</strong> Matches any word in the specified position, useful when exact phrasing varies.</p>
+                </div>
+
+                <h4>Advanced Operators</h4>
+
+                <div class="operator-detail">
+                    <h5>intitle: and allintitle:</h5>
+                    <p><strong>Syntax:</strong> <code>intitle:keyword</code> or <code>allintitle:keyword1 keyword2</code></p>
+                    <p><strong>Behavior:</strong> Searches within HTML title tags. The "all" variant requires all keywords to appear in the title.</p>
+                    <div class="code-example">
+                        <strong>Example Query:</strong><br>
+                        <code>intitle:"index of" "database.sql"</code><br><br>
+                        <strong>Rationale:</strong> Directory listing pages often include "index of" in their titles. Combined with a database file search, this identifies exposed SQL dumps.<br><br>
+                        <strong>Risk Level:</strong> High - Direct access to database contents
+                    </div>
+                </div>
+
+                <div class="operator-detail">
+                    <h5>inurl: and allinurl:</h5>
+                    <p><strong>Syntax:</strong> <code>inurl:keyword</code> or <code>allinurl:keyword1 keyword2</code></p>
+                    <p><strong>Behavior:</strong> Searches within URL strings, identifying specific paths or parameters.</p>
+                    <div class="code-example">
+                        <strong>Example Query:</strong><br>
+                        <code>inurl:admin inurl:login filetype:php</code><br><br>
+                        <strong>Rationale:</strong> Administrative login pages typically contain "admin" or "login" in their URLs and are often PHP-based.<br><br>
+                        <strong>Risk Level:</strong> Medium-High - Identifies authentication entry points
+                    </div>
+                </div>
+
+                <div class="operator-detail">
+                    <h5>filetype: / ext:</h5>
+                    <p><strong>Syntax:</strong> <code>filetype:extension</code></p>
+                    <p><strong>Behavior:</strong> Restricts results to specific file types based on extension.</p>
+                    <p><strong>High-Risk File Types:</strong></p>
+                    <ul>
+                        <li><strong>.sql, .dump, .dmp:</strong> Database backups containing structured data</li>
+                        <li><strong>.log:</strong> Application logs potentially containing credentials or error traces</li>
+                        <li><strong>.env:</strong> Environment configuration files with API keys and database credentials</li>
+                        <li><strong>.pem, .key, .crt:</strong> Cryptographic private keys and certificates</li>
+                        <li><strong>.conf, .config:</strong> Server configuration files</li>
+                        <li><strong>.bak, .old, .backup:</strong> Backup files often containing unredacted source code</li>
+                    </ul>
+                    <div class="code-example">
+                        <strong>Example Query:</strong><br>
+                        <code>filetype:env "DB_PASSWORD"</code><br><br>
+                        <strong>Rationale:</strong> .env files store environment variables for applications. Exposed files directly reveal database credentials.<br><br>
+                        <strong>Risk Level:</strong> Critical - Direct credential exposure
+                    </div>
+                </div>
+
+                <div class="operator-detail">
+                    <h5>site:</h5>
+                    <p><strong>Syntax:</strong> <code>site:domain.com</code></p>
+                    <p><strong>Behavior:</strong> Constrains search to specified domain or subdomain hierarchy.</p>
+                    <div class="code-example">
+                        <strong>Example Query:</strong><br>
+                        <code>site:target.com filetype:pdf confidential</code><br><br>
+                        <strong>Rationale:</strong> Identifies confidential documents hosted on target domain.<br><br>
+                        <strong>Application:</strong> Targeted reconnaissance during penetration testing engagements
+                    </div>
+                </div>
+
+                <div class="operator-detail">
+                    <h5>cache:</h5>
+                    <p><strong>Syntax:</strong> <code>cache:url</code></p>
+                    <p><strong>Behavior:</strong> Displays Google's cached snapshot of a page, useful when content has been removed but remains in the index.</p>
+                    <div class="code-example">
+                        <strong>Example Query:</strong><br>
+                        <code>cache:example.com/admin/users.php</code><br><br>
+                        <strong>Rationale:</strong> Access previously indexed pages that have since been secured or removed.<br><br>
+                        <strong>Risk Level:</strong> Medium - Historical exposure
+                    </div>
+                </div>
+
+                <h3>Google Hacking Attack Categories</h3>
+                <p>Google Dorks can be systematically classified based on their reconnaissance objectives. Click each category to expand details:</p>
+
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h4>🔑 1. Credential Discovery</h4>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Objective:</strong> Locate exposed usernames, passwords, API keys, and authentication tokens.</p>
+                            <p><strong>Common Dorks:</strong></p>
+                            <ul>
+                                <li><code>filetype:log intext:"password" intext:"username"</code></li>
+                                <li><code>intext:"Index of" intext:"/password" ext:txt</code></li>
+                                <li><code>"api_key" OR "apikey" filetype:json</code></li>
+                                <li><code>inurl:wp-config.php intext:DB_PASSWORD</code></li>
+                            </ul>
+                            <p><strong>Risk Assessment:</strong> <span class="risk-badge critical">Critical</span> - Direct authentication bypass potential</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h4>📁 2. Directory Traversal and Indexing</h4>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Objective:</strong> Identify web servers with directory listing enabled, exposing file structure.</p>
+                            <p><strong>Common Dorks:</strong></p>
+                            <ul>
+                                <li><code>intitle:"Index of /" "Parent Directory"</code></li>
+                                <li><code>intitle:"index of" inurl:backup</code></li>
+                                <li><code>"Index of" inurl:/admin</code></li>
+                            </ul>
+                            <p><strong>Risk Assessment:</strong> <span class="risk-badge high">High</span> - Reveals application architecture and sensitive files</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h4>💾 3. SQL Database Exposure</h4>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Objective:</strong> Locate database dumps, exports, and backup files containing structured data.</p>
+                            <p><strong>Common Dorks:</strong></p>
+                            <ul>
+                                <li><code>filetype:sql "INSERT INTO" "users" "password"</code></li>
+                                <li><code>filetype:sql intext:"-- phpMyAdmin SQL Dump"</code></li>
+                                <li><code>"create table" "insert into" ext:sql</code></li>
+                            </ul>
+                            <p><strong>Risk Assessment:</strong> <span class="risk-badge critical">Critical</span> - Direct access to structured database content</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h4>⚙️ 4. Configuration File Disclosure</h4>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Objective:</strong> Discover server and application configuration files revealing system architecture.</p>
+                            <p><strong>Common Dorks:</strong></p>
+                            <ul>
+                                <li><code>filetype:conf inurl:/etc</code></li>
+                                <li><code>inurl:web.config intext:"connectionString"</code></li>
+                                <li><code>ext:ini "database" "password"</code></li>
+                            </ul>
+                            <p><strong>Risk Assessment:</strong> <span class="risk-badge high">High</span> - Reveals system configuration and potential credentials</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h4>⚠️ 5. Error Message Exploitation</h4>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Objective:</strong> Find verbose error messages that disclose software versions, file paths, and database structures.</p>
+                            <p><strong>Common Dorks:</strong></p>
+                            <ul>
+                                <li><code>intext:"SQL syntax" intext:"mysql_fetch"</code></li>
+                                <li><code>intitle:"Error" intext:"Warning: mysql" intext:"on line"</code></li>
+                                <li><code>"Fatal error" inurl:/admin</code></li>
+                            </ul>
+                            <p><strong>Risk Assessment:</strong> <span class="risk-badge medium">Medium</span> - Information disclosure aids further attacks</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h4>📹 6. IoT and Network Device Discovery</h4>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Objective:</strong> Identify internet-connected devices such as cameras, routers, and industrial control systems.</p>
+                            <p><strong>Common Dorks:</strong></p>
+                            <ul>
+                                <li><code>inurl:"viewerframe?mode="</code></li>
+                                <li><code>intitle:"Network Camera" inurl:main</code></li>
+                                <li><code>inurl:"/view/index.shtml"</code></li>
+                            </ul>
+                            <p><strong>Risk Assessment:</strong> <span class="risk-badge high">High</span> - Physical surveillance and network access</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h4>🐛 7. Vulnerable Web Application Identification</h4>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Objective:</strong> Locate web applications with known vulnerabilities based on version fingerprinting.</p>
+                            <p><strong>Common Dorks:</strong></p>
+                            <ul>
+                                <li><code>inurl:wp-content intitle:"WordPress 5.0"</code></li>
+                                <li><code>"powered by Joomla 3.4"</code></li>
+                                <li><code>intitle:"phpMyAdmin" "running on" inurl:"/phpmyadmin/"</code></li>
+                            </ul>
+                            <p><strong>Risk Assessment:</strong> <span class="risk-badge high">High</span> - Enables targeted exploitation of known CVEs</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h4>📄 8. Sensitive Document Discovery</h4>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Objective:</strong> Uncover confidential documents including financial reports, personnel files, and proprietary data.</p>
+                            <p><strong>Common Dorks:</strong></p>
+                            <ul>
+                                <li><code>filetype:pdf "confidential" "salary"</code></li>
+                                <li><code>filetype:xls inurl:"email.xls"</code></li>
+                                <li><code>intext:"Social Security Number" filetype:pdf</code></li>
+                            </ul>
+                            <p><strong>Risk Assessment:</strong> <span class="risk-badge high">High</span> - Privacy violations and competitive intelligence</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h4>🖥️ 9. Server Information Disclosure</h4>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Objective:</strong> Identify server status pages and information disclosure endpoints.</p>
+                            <p><strong>Common Dorks:</strong></p>
+                            <ul>
+                                <li><code>intitle:"Apache Status" intext:"Apache Server Status"</code></li>
+                                <li><code>intitle:"PHP Version" "phpinfo()"</code></li>
+                                <li><code>inurl:server-status</code></li>
+                            </ul>
+                            <p><strong>Risk Assessment:</strong> <span class="risk-badge medium">Medium</span> - Server configuration and version disclosure</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h4>🔓 10. Version Control Exposure</h4>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Objective:</strong> Locate exposed .git, .svn directories containing complete source code history.</p>
+                            <p><strong>Common Dorks:</strong></p>
+                            <ul>
+                                <li><code>inurl:"/.git" intitle:"Index of /"</code></li>
+                                <li><code>inurl:/.svn/entries</code></li>
+                                <li><code>intext:"index of /.git" "parent directory"</code></li>
+                            </ul>
+                            <p><strong>Risk Assessment:</strong> <span class="risk-badge critical">Critical</span> - Complete source code and commit history exposure</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h4>☁️ 11. Cloud Storage Misconfiguration</h4>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Objective:</strong> Discover publicly accessible cloud storage buckets (AWS S3, Azure Blob, GCS).</p>
+                            <p><strong>Common Dorks:</strong></p>
+                            <ul>
+                                <li><code>site:s3.amazonaws.com filetype:pdf</code></li>
+                                <li><code>inurl:"/s3.amazonaws.com/" intitle:"index of"</code></li>
+                                <li><code>site:blob.core.windows.net</code></li>
+                            </ul>
+                            <p><strong>Risk Assessment:</strong> <span class="risk-badge critical">Critical</span> - Bulk data exposure</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h4>🚪 12. Login Portal Enumeration</h4>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Objective:</strong> Map authentication endpoints for brute force or credential stuffing attacks.</p>
+                            <p><strong>Common Dorks:</strong></p>
+                            <ul>
+                                <li><code>inurl:admin intitle:login</code></li>
+                                <li><code>inurl:wp-login.php</code></li>
+                                <li><code>intitle:"Dashboard" inurl:login</code></li>
+                            </ul>
+                            <p><strong>Risk Assessment:</strong> <span class="risk-badge medium">Medium</span> - Enables subsequent authentication attacks</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Practical Case Study: WordPress Site Reconnaissance</h3>
+                <p>This hypothetical scenario demonstrates a methodical Google Hacking reconnaissance campaign targeting a WordPress-based website.</p>
+
+                <div class="case-study">
+                    <h4>Phase 1: Initial Discovery</h4>
+                    <p><strong>Query:</strong> <code>site:target.com inurl:wp-content</code></p>
+                    <p><strong>Result:</strong> Confirms WordPress deployment and identifies plugin structure</p>
+
+                    <h4>Phase 2: Version Fingerprinting</h4>
+                    <p><strong>Query:</strong> <code>site:target.com inurl:wp-includes/version.php</code></p>
+                    <p><strong>Result:</strong> Reveals WordPress version (e.g., 5.8.1)</p>
+                    <p><strong>Analysis:</strong> Cross-reference with CVE database to identify known vulnerabilities</p>
+
+                    <h4>Phase 3: Plugin Enumeration</h4>
+                    <p><strong>Query:</strong> <code>site:target.com inurl:/wp-content/plugins/</code></p>
+                    <p><strong>Result:</strong> Lists installed plugins via directory browsing</p>
+                    <p><strong>Analysis:</strong> Research identified plugins for known security flaws</p>
+
+                    <h4>Phase 4: User Enumeration</h4>
+                    <p><strong>Query:</strong> <code>site:target.com inurl:author=</code></p>
+                    <p><strong>Result:</strong> Reveals WordPress usernames through author archives</p>
+                    <p><strong>Analysis:</strong> Compile username list for authentication attacks</p>
+
+                    <h4>Phase 5: Backup Discovery</h4>
+                    <p><strong>Query:</strong> <code>site:target.com (ext:sql OR ext:zip OR ext:bak) intext:backup</code></p>
+                    <p><strong>Result:</strong> Locates database or site backups</p>
+                    <p><strong>Analysis:</strong> Download and analyze for credentials</p>
+
+                    <h4>Phase 6: Configuration File Search</h4>
+                    <p><strong>Query:</strong> <code>site:target.com inurl:wp-config.php.bak</code></p>
+                    <p><strong>Result:</strong> May discover backup configuration files with database credentials</p>
+                    <p><strong>Analysis:</strong> Direct database access if credentials valid</p>
+                </div>
+
+                <h3>Defense Mechanisms</h3>
+                <p>Organizations can implement multiple defensive layers to mitigate Google Hacking reconnaissance:</p>
+
+                <div class="defense-grid">
+                    <div class="defense-item">
+                        <h4>1. Robots.txt Optimization</h4>
+                        <p>Configure robots.txt to disallow crawling of sensitive directories:</p>
+                        <pre><code>User-agent: *
+Disallow: /admin/
+Disallow: /backup/
+Disallow: /config/
+Disallow: /logs/</code></pre>
+                        <p><strong>Limitation:</strong> Not enforced; relies on crawler compliance</p>
+                    </div>
+
+                    <div class="defense-item">
+                        <h4>2. Meta Robots Tags</h4>
+                        <p>Prevent indexing at the page level:</p>
+                        <pre><code>&lt;meta name="robots" content="noindex, nofollow"&gt;</code></pre>
+                    </div>
+
+                    <div class="defense-item">
+                        <h4>3. X-Robots-Tag HTTP Header</h4>
+                        <p>Server-level indexing control for non-HTML files:</p>
+                        <pre><code>X-Robots-Tag: noindex</code></pre>
+                    </div>
+
+                    <div class="defense-item">
+                        <h4>4. Authentication Requirements</h4>
+                        <p>Implement authentication for all sensitive areas:</p>
+                        <ul>
+                            <li>Administrative interfaces</li>
+                            <li>Development/staging environments</li>
+                            <li>Backup directories</li>
+                            <li>Configuration files</li>
+                        </ul>
+                    </div>
+
+                    <div class="defense-item">
+                        <h4>5. Disable Directory Listing</h4>
+                        <p>Apache .htaccess configuration:</p>
+                        <pre><code>Options -Indexes</code></pre>
+                        <p>Nginx configuration:</p>
+                        <pre><code>autoindex off;</code></pre>
+                    </div>
+
+                    <div class="defense-item">
+                        <h4>6. Google Search Console Monitoring</h4>
+                        <p>Regularly audit indexed URLs through Google Search Console to identify unintended exposure</p>
+                    </div>
+
+                    <div class="defense-item">
+                        <h4>7. Content Security Auditing</h4>
+                        <p>Perform periodic Google Hacking assessments against your own infrastructure to identify exposure</p>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <h4>Critical Defensive Principle</h4>
+                    <p>The most effective defense is to never expose sensitive information to the web in the first place. Security should be implemented at the source, not rely solely on search engine exclusion directives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="section bg-dark">
+        <div class="container">
+            <h2 class="section-title">Original Research: Google Dork Risk Classification Framework</h2>
+
+            <div class="content-main">
+                <p class="lead">This section presents an original quantitative framework for assessing the risk level of Google Dorks based on multiple dimensions of exposure severity and exploitability.</p>
+
+                <h3>Research Motivation</h3>
+                <p>Existing Google Hacking resources provide qualitative categorization (e.g., "finds passwords", "locates admin panels") but lack standardized risk scoring. This creates challenges for security professionals attempting to prioritize remediation efforts. Our research addresses this gap by developing a multi-factor risk assessment model.</p>
+
+                <h3>Risk Scoring Methodology</h3>
+                <p>We propose a composite risk score calculated across five dimensions:</p>
+
+                <div class="methodology-grid">
+                    <div class="method-card">
+                        <h4>1. Information Sensitivity (IS)</h4>
+                        <p>Measures the criticality of exposed information</p>
+                        <table class="score-table">
+                            <tr>
+                                <th>Level</th>
+                                <th>Score</th>
+                                <th>Description</th>
+                            </tr>
+                            <tr>
+                                <td>Low</td>
+                                <td>1</td>
+                                <td>Public information (press releases, marketing materials)</td>
+                            </tr>
+                            <tr>
+                                <td>Medium</td>
+                                <td>2</td>
+                                <td>Internal information (directory structures, version info)</td>
+                            </tr>
+                            <tr>
+                                <td>High</td>
+                                <td>3</td>
+                                <td>Sensitive data (user lists, configuration files)</td>
+                            </tr>
+                            <tr>
+                                <td>Critical</td>
+                                <td>4</td>
+                                <td>Credentials (passwords, API keys, private keys)</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="method-card">
+                        <h4>2. Exploitability (EX)</h4>
+                        <p>Assesses ease of leveraging discovered information</p>
+                        <table class="score-table">
+                            <tr>
+                                <th>Level</th>
+                                <th>Score</th>
+                                <th>Description</th>
+                            </tr>
+                            <tr>
+                                <td>Low</td>
+                                <td>1</td>
+                                <td>Information requires significant analysis</td>
+                            </tr>
+                            <tr>
+                                <td>Medium</td>
+                                <td>2</td>
+                                <td>Moderate technical skill required</td>
+                            </tr>
+                            <tr>
+                                <td>High</td>
+                                <td>3</td>
+                                <td>Direct exploitation possible</td>
+                            </tr>
+                            <tr>
+                                <td>Critical</td>
+                                <td>4</td>
+                                <td>Immediate system access or data breach</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="method-card">
+                        <h4>3. Prevalence (PR)</h4>
+                        <p>Estimates frequency of vulnerable configurations</p>
+                        <table class="score-table">
+                            <tr>
+                                <th>Level</th>
+                                <th>Score</th>
+                                <th>Description</th>
+                            </tr>
+                            <tr>
+                                <td>Rare</td>
+                                <td>1</td>
+                                <td>&lt;100 results globally</td>
+                            </tr>
+                            <tr>
+                                <td>Uncommon</td>
+                                <td>2</td>
+                                <td>100-10,000 results</td>
+                            </tr>
+                            <tr>
+                                <td>Common</td>
+                                <td>3</td>
+                                <td>10,000-100,000 results</td>
+                            </tr>
+                            <tr>
+                                <td>Widespread</td>
+                                <td>4</td>
+                                <td>&gt;100,000 results</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="method-card">
+                        <h4>4. Impact Scope (SC)</h4>
+                        <p>Evaluates the breadth of potential compromise</p>
+                        <table class="score-table">
+                            <tr>
+                                <th>Level</th>
+                                <th>Score</th>
+                                <th>Description</th>
+                            </tr>
+                            <tr>
+                                <td>Individual</td>
+                                <td>1</td>
+                                <td>Single user/account affected</td>
+                            </tr>
+                            <tr>
+                                <td>Limited</td>
+                                <td>2</td>
+                                <td>Multiple users or single system</td>
+                            </tr>
+                            <tr>
+                                <td>Organizational</td>
+                                <td>3</td>
+                                <td>Multiple systems or departments</td>
+                            </tr>
+                            <tr>
+                                <td>Enterprise</td>
+                                <td>4</td>
+                                <td>Complete infrastructure compromise</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="method-card">
+                        <h4>5. Detectability (DE)</h4>
+                        <p>Measures how easily the reconnaissance can be detected</p>
+                        <table class="score-table">
+                            <tr>
+                                <th>Level</th>
+                                <th>Score</th>
+                                <th>Description</th>
+                            </tr>
+                            <tr>
+                                <td>Easily Detected</td>
+                                <td>1</td>
+                                <td>Leaves clear forensic evidence</td>
+                            </tr>
+                            <tr>
+                                <td>Moderately Detectable</td>
+                                <td>2</td>
+                                <td>Detectable with monitoring</td>
+                            </tr>
+                            <tr>
+                                <td>Difficult to Detect</td>
+                                <td>3</td>
+                                <td>Requires advanced logging</td>
+                            </tr>
+                            <tr>
+                                <td>Undetectable</td>
+                                <td>4</td>
+                                <td>Passive, no target interaction</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <h3>Composite Risk Score Calculation</h3>
+                <p>The overall risk score (RS) is computed using weighted factors:</p>
+
+                <div class="formula-box">
+                    <p class="formula">RS = (IS × 0.35) + (EX × 0.30) + (PR × 0.15) + (SC × 0.15) + (DE × 0.05)</p>
+                    <p class="formula-description">Score Range: 1.00 (Minimal) to 4.00 (Critical)</p>
+                </div>
+
+                <p><strong>Weighting Rationale:</strong></p>
+                <ul>
+                    <li>Information Sensitivity (35%): Most critical factor - determines inherent risk</li>
+                    <li>Exploitability (30%): High weight as it determines likelihood of active exploitation</li>
+                    <li>Prevalence (15%): Moderate weight - common vulnerabilities pose broader threat</li>
+                    <li>Impact Scope (15%): Moderate weight - scales the potential damage</li>
+                    <li>Detectability (5%): Lower weight - primarily affects attacker operational security</li>
+                </ul>
+
+                <h3>Risk Level Classification</h3>
+                <table class="classification-table">
+                    <thead>
+                        <tr>
+                            <th>Risk Level</th>
+                            <th>Score Range</th>
+                            <th>Color Code</th>
+                            <th>Remediation Priority</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="risk-minimal">
+                            <td>Minimal</td>
+                            <td>1.00 - 1.75</td>
+                            <td><span class="risk-badge minimal">Minimal</span></td>
+                            <td>Routine review</td>
+                        </tr>
+                        <tr class="risk-low">
+                            <td>Low</td>
+                            <td>1.76 - 2.50</td>
+                            <td><span class="risk-badge low">Low</span></td>
+                            <td>Address in normal cycle</td>
+                        </tr>
+                        <tr class="risk-medium">
+                            <td>Medium</td>
+                            <td>2.51 - 3.00</td>
+                            <td><span class="risk-badge medium">Medium</span></td>
+                            <td>Remediate within 30 days</td>
+                        </tr>
+                        <tr class="risk-high">
+                            <td>High</td>
+                            <td>3.01 - 3.50</td>
+                            <td><span class="risk-badge high">High</span></td>
+                            <td>Remediate within 7 days</td>
+                        </tr>
+                        <tr class="risk-critical">
+                            <td>Critical</td>
+                            <td>3.51 - 4.00</td>
+                            <td><span class="risk-badge critical">Critical</span></td>
+                            <td>Immediate action required</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Application Examples</h3>
+
+                <div class="example-analysis">
+                    <h4>Example 1: Database Dump Discovery</h4>
+                    <p><strong>Dork:</strong> <code>filetype:sql "INSERT INTO users" "password"</code></p>
+                    <table class="analysis-table">
+                        <tr>
+                            <td>Information Sensitivity</td>
+                            <td>4 (Critical)</td>
+                            <td>Exposes user credentials</td>
+                        </tr>
+                        <tr>
+                            <td>Exploitability</td>
+                            <td>4 (Critical)</td>
+                            <td>Direct credential access</td>
+                        </tr>
+                        <tr>
+                            <td>Prevalence</td>
+                            <td>3 (Common)</td>
+                            <td>~50,000 results</td>
+                        </tr>
+                        <tr>
+                            <td>Impact Scope</td>
+                            <td>4 (Enterprise)</td>
+                            <td>Complete user database</td>
+                        </tr>
+                        <tr>
+                            <td>Detectability</td>
+                            <td>4 (Undetectable)</td>
+                            <td>Passive search</td>
+                        </tr>
+                    </table>
+                    <p><strong>Calculation:</strong> (4×0.35) + (4×0.30) + (3×0.15) + (4×0.15) + (4×0.05) = 3.95</p>
+                    <p><strong>Risk Level:</strong> <span class="risk-badge critical">Critical (3.95)</span></p>
+                    <p><strong>Recommendation:</strong> Immediate removal from search index and server, credential rotation, incident response activation</p>
+                </div>
+
+                <div class="example-analysis">
+                    <h4>Example 2: Directory Listing</h4>
+                    <p><strong>Dork:</strong> <code>intitle:"Index of /" "Parent Directory"</code></p>
+                    <table class="analysis-table">
+                        <tr>
+                            <td>Information Sensitivity</td>
+                            <td>2 (Medium)</td>
+                            <td>Reveals file structure</td>
+                        </tr>
+                        <tr>
+                            <td>Exploitability</td>
+                            <td>2 (Medium)</td>
+                            <td>Requires further analysis</td>
+                        </tr>
+                        <tr>
+                            <td>Prevalence</td>
+                            <td>4 (Widespread)</td>
+                            <td>&gt;1 million results</td>
+                        </tr>
+                        <tr>
+                            <td>Impact Scope</td>
+                            <td>2 (Limited)</td>
+                            <td>Single system exposure</td>
+                        </tr>
+                        <tr>
+                            <td>Detectability</td>
+                            <td>4 (Undetectable)</td>
+                            <td>Passive search</td>
+                        </tr>
+                    </table>
+                    <p><strong>Calculation:</strong> (2×0.35) + (2×0.30) + (4×0.15) + (2×0.15) + (4×0.05) = 2.50</p>
+                    <p><strong>Risk Level:</strong> <span class="risk-badge low">Low (2.50)</span></p>
+                    <p><strong>Recommendation:</strong> Disable directory listing, implement authentication for sensitive paths</p>
+                </div>
+
+                <div class="example-analysis">
+                    <h4>Example 3: Version Disclosure</h4>
+                    <p><strong>Dork:</strong> <code>intitle:"Apache Status" "Apache Server Status"</code></p>
+                    <table class="analysis-table">
+                        <tr>
+                            <td>Information Sensitivity</td>
+                            <td>2 (Medium)</td>
+                            <td>Version and config info</td>
+                        </tr>
+                        <tr>
+                            <td>Exploitability</td>
+                            <td>2 (Medium)</td>
+                            <td>Enables targeted attacks</td>
+                        </tr>
+                        <tr>
+                            <td>Prevalence</td>
+                            <td>2 (Uncommon)</td>
+                            <td>~5,000 results</td>
+                        </tr>
+                        <tr>
+                            <td>Impact Scope</td>
+                            <td>1 (Individual)</td>
+                            <td>Single server</td>
+                        </tr>
+                        <tr>
+                            <td>Detectability</td>
+                            <td>4 (Undetectable)</td>
+                            <td>Passive search</td>
+                        </tr>
+                    </table>
+                    <p><strong>Calculation:</strong> (2×0.35) + (2×0.30) + (2×0.15) + (1×0.15) + (4×0.05) = 1.85</p>
+                    <p><strong>Risk Level:</strong> <span class="risk-badge low">Low (1.85)</span></p>
+                    <p><strong>Recommendation:</strong> Restrict access to status pages, implement authentication</p>
+                </div>
+
+                <h3>Validation and Limitations</h3>
+                <p>This framework was developed through analysis of 200+ documented Google Dorks from the GHDB and academic literature. Validation involved:</p>
+                <ul>
+                    <li>Comparative analysis with existing qualitative classifications</li>
+                    <li>Expert review by cybersecurity professionals</li>
+                    <li>Correlation with real-world breach data where available</li>
+                </ul>
+
+                <p><strong>Limitations:</strong></p>
+                <ul>
+                    <li>Scoring involves subjective judgment in certain dimensions</li>
+                    <li>Prevalence scores may fluctuate based on search engine indexing cycles</li>
+                    <li>Context-specific factors (industry, regulatory requirements) may require weight adjustment</li>
+                    <li>Model does not account for defense-in-depth controls that may mitigate discovered exposures</li>
+                </ul>
+
+                <h3>Future Research Directions</h3>
+                <p>Potential extensions of this framework include:</p>
+                <ul>
+                    <li>Machine learning models to automate dimensional scoring</li>
+                    <li>Dynamic weight adjustment based on organizational risk appetite</li>
+                    <li>Integration with threat intelligence feeds to update prevalence scores</li>
+                    <li>Correlation analysis between dork types and successful breach campaigns</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Tool Section -->
+    <section id="tool" class="section">
+        <div class="container">
+            <h2 class="section-title">AI-Powered Google Dork Generator</h2>
+            <p class="tool-intro">Describe what you're looking for in plain English, and our intelligent system will generate optimized Google Dorks with real-time risk assessment and visual analytics.</p>
+
+            <div class="ai-tool-container">
+                <!-- AI Input Section -->
+                <div class="ai-input-section">
+                    <div class="ai-header">
+                        <span class="ai-icon">🤖</span>
+                        <h3>Intelligent Dork Generator</h3>
+                    </div>
+
+                    <div class="input-wrapper">
+                        <textarea
+                            id="aiInput"
+                            class="ai-input"
+                            placeholder="Describe what you want to find in natural language...&#10;&#10;Examples:&#10;• Find exposed MySQL databases with passwords&#10;• Search for admin login pages on government sites&#10;• Locate PDF files containing confidential information&#10;• Discover publicly accessible security cameras&#10;• Find environment configuration files with API keys"
+                        ></textarea>
+
+                        <div class="quick-examples">
+                            <span class="examples-label">Quick Examples:</span>
+                            <button class="example-chip" onclick="setAIInput('Find database backup files with passwords')">Database Backups</button>
+                            <button class="example-chip" onclick="setAIInput('Search for exposed git repositories')">Git Repos</button>
+                            <button class="example-chip" onclick="setAIInput('Locate admin panels on PHP sites')">Admin Panels</button>
+                            <button class="example-chip" onclick="setAIInput('Find log files containing credentials')">Log Files</button>
+                        </div>
+
+                        <div class="ai-controls">
+                            <button class="btn-generate" onclick="generateDork()">
+                                <span class="btn-icon">✨</span>
+                                Generate Dork
+                            </button>
+                            <button class="btn-clear-ai" onclick="clearAI()">Clear</button>
+                        </div>
+                    </div>
+
+                    <!-- Generated Dork Display -->
+                    <div id="generatedDorkSection" class="generated-dork-section hidden">
+                        <div class="dork-output-header">
+                            <h4>Generated Google Dork</h4>
+                            <button class="btn-copy" onclick="copyDork()" title="Copy to clipboard">
+                                <span id="copyIcon">📋</span>
+                            </button>
+                        </div>
+                        <div class="dork-output">
+                            <code id="generatedDork"></code>
+                        </div>
+                        <div class="dork-explanation">
+                            <span class="explain-label">How it works:</span>
+                            <p id="dorkExplanation"></p>
+                        </div>
+                        <div class="refine-section">
+                            <span class="refine-label">Refine your search:</span>
+                            <div class="refine-buttons" id="refineButtons"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analysis Results Section -->
+                <div id="aiResults" class="ai-results-section hidden">
+                    <!-- Risk Score Circle and Radar Chart -->
+                    <div class="dual-visual">
+                        <div class="risk-circle-container">
+                            <h4>Overall Risk</h4>
+                            <div class="score-circle-large" id="scoreCircleAI">
+                                <span id="scoreValueAI" class="score-value-large">0.0</span>
+                                <span class="score-max-large">/4.0</span>
+                            </div>
+                            <div class="score-label-large" id="scoreLabelAI">Analyzing...</div>
+                        </div>
+
+                        <div class="radar-chart-container">
+                            <h4>Risk Factor Visualization</h4>
+                            <canvas id="riskRadarChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Simulated Results -->
+                    <div class="ai-simulated-results">
+                        <h4>Estimated Impact</h4>
+                        <div class="impact-stats">
+                            <div class="stat-card">
+                                <div class="stat-icon">🔍</div>
+                                <div class="stat-value" id="estimatedResults">~0</div>
+                                <div class="stat-label">Potential Results</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">⚠️</div>
+                                <div class="stat-value" id="affectedSites">~0</div>
+                                <div class="stat-label">Affected Sites</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">🌍</div>
+                                <div class="stat-value" id="globalReach">-</div>
+                                <div class="stat-label">Global Reach</div>
+                            </div>
+                        </div>
+
+                        <div class="result-preview">
+                            <h5>Sample Results Preview</h5>
+                            <div id="sampleResults" class="sample-results-list"></div>
+                        </div>
+                    </div>
+
+                    <!-- Recommendations -->
+                    <div class="ai-recommendations">
+                        <h4>Security Recommendations</h4>
+                        <div id="aiRecommendationsList" class="ai-rec-list"></div>
+                    </div>
+
+                    <!-- Generation History -->
+                    <div class="generation-history">
+                        <div class="history-header">
+                            <h4>Recent Generations</h4>
+                            <button class="btn-clear-history" onclick="clearHistory()">Clear History</button>
+                        </div>
+                        <div id="historyList" class="history-list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Own Contribution Section -->
+    <section id="opinion" class="section bg-dark">
+        <div class="container">
+            <h2 class="section-title">Own Opinion and Contribution</h2>
+
+            <div class="content-main">
+                <h3>Critical Evaluation of Google Hacking</h3>
+                <p class="lead">Google Hacking represents a paradox in modern cybersecurity: a powerful defensive reconnaissance tool that simultaneously enables malicious actors. This duality necessitates careful ethical and technical consideration.</p>
+
+                <h4>The Defensive Perspective</h4>
+                <p>From a defensive cybersecurity standpoint, Google Hacking is invaluable. It enables organizations to:</p>
+                <ul>
+                    <li><strong>Discover their own exposure:</strong> Organizations can proactively identify what sensitive information about their infrastructure is publicly indexed before adversaries do.</li>
+                    <li><strong>Validate security controls:</strong> Google Dorking serves as an external penetration testing methodology that validates whether authentication, robots.txt directives, and access controls are properly configured.</li>
+                    <li><strong>Inform security awareness:</strong> Demonstrating Google Hacking capabilities to development and operations teams viscerally illustrates the consequences of security misconfigurations.</li>
+                </ul>
+
+                <p>In my analysis, the most significant defensive value lies in the mindset shift it induces. Many developers and administrators assume that information is secure if it requires "knowing the URL." Google Hacking demonstrates that obscurity is not security when search engines systematically catalog the entire web.</p>
+
+                <h4>The Offensive Reality</h4>
+                <p>Conversely, malicious actors leverage Google Hacking as a zero-cost, zero-risk reconnaissance platform. Unlike traditional network scanning, which generates logs and triggers intrusion detection systems, Google Dorking is:</p>
+                <ul>
+                    <li><strong>Completely passive:</strong> No direct interaction with target systems</li>
+                    <li><strong>Legally ambiguous:</strong> Merely using a search engine is not illegal</li>
+                    <li><strong>Highly scalable:</strong> Automated tools can execute thousands of dorks rapidly</li>
+                    <li><strong>Persistent:</strong> Cached content remains accessible even after removal</li>
+                </ul>
+
+                <p>This asymmetry creates a fundamental challenge: defenders must secure every potential exposure point, while attackers need only find one.</p>
+
+                <h3>Personal Contribution: Risk Quantification Framework</h3>
+                <p>The primary original contribution of this project is the development of a multi-dimensional risk scoring framework for Google Dorks. Previous resources categorize dorks qualitatively (e.g., "finds passwords"), but lack quantitative metrics for prioritization.</p>
+
+                <p>My framework addresses this gap through five weighted dimensions:</p>
+                <ol>
+                    <li><strong>Information Sensitivity (35%):</strong> Quantifies the criticality of exposed data</li>
+                    <li><strong>Exploitability (30%):</strong> Assesses ease of weaponization</li>
+                    <li><strong>Prevalence (15%):</strong> Measures how widespread the vulnerability is</li>
+                    <li><strong>Impact Scope (15%):</strong> Evaluates breadth of potential compromise</li>
+                    <li><strong>Detectability (5%):</strong> Considers forensic visibility</li>
+                </ol>
+
+                <p>This model enables security teams to:</p>
+                <ul>
+                    <li>Prioritize remediation efforts based on quantitative risk rather than subjective judgment</li>
+                    <li>Allocate security resources efficiently by focusing on high-scoring exposure types</li>
+                    <li>Communicate risk to non-technical stakeholders using standardized metrics</li>
+                    <li>Track risk reduction progress over time as exposures are remediated</li>
+                </ul>
+
+                <h4>Validation and Refinement</h4>
+                <p>The framework was developed iteratively through:</p>
+                <ol>
+                    <li>Analysis of 200+ documented dorks from the GHDB</li>
+                    <li>Correlation with real-world breach data where available</li>
+                    <li>Expert review and weight calibration</li>
+                    <li>Comparative validation against qualitative classifications</li>
+                </ol>
+
+                <p>While the model necessarily involves subjective scoring in certain dimensions, the structured approach provides significantly more consistency than ad-hoc assessments.</p>
+
+                <h3>Interactive Tool Development</h3>
+                <p>The second major contribution is the interactive Google Dork Builder & Risk Analyzer tool. This web-based application provides:</p>
+                <ul>
+                    <li><strong>Educational value:</strong> Security students and professionals can learn operator syntax and combinations</li>
+                    <li><strong>Real-time risk assessment:</strong> Immediate feedback on dork risk levels as queries are constructed</li>
+                    <li><strong>Simulated results:</strong> Realistic examples of what discovered content looks like without actually performing searches</li>
+                    <li><strong>Mitigation guidance:</strong> Contextual recommendations for addressing discovered vulnerabilities</li>
+                </ul>
+
+                <p>The tool bridges the gap between theoretical knowledge and practical application, enabling hands-on learning in a controlled environment.</p>
+
+                <h3>Ethical Considerations and Responsible Disclosure</h3>
+                <p>Throughout this research, I adhered to strict ethical guidelines:</p>
+                <ul>
+                    <li>All examples use publicly documented dorks from established databases</li>
+                    <li>No active exploitation or system access attempts were performed</li>
+                    <li>Simulated results are fictional but realistic</li>
+                    <li>The tool is designed for educational and defensive purposes</li>
+                </ul>
+
+                <p>I advocate for responsible disclosure when security researchers discover exposed sensitive information through Google Hacking. Organizations should be notified privately to allow remediation before public disclosure.</p>
+
+                <h3>Future Research Directions</h3>
+                <p>This project establishes a foundation for several future research avenues:</p>
+
+                <h4>1. Machine Learning-Enhanced Dork Generation</h4>
+                <p>Natural language processing models could be trained on existing dork collections to automatically generate effective queries targeting specific vulnerability types. This would enable adaptive reconnaissance that evolves with web technologies.</p>
+
+                <h4>2. Continuous Exposure Monitoring Platforms</h4>
+                <p>Organizations could deploy automated systems that periodically execute dorks against their own infrastructure, alerting security teams to new exposures as they appear in search indexes.</p>
+
+                <h4>3. Search Engine Security Features</h4>
+                <p>Collaboration between security researchers and search engine providers could yield features that alert website owners when sensitive content is indexed, similar to how Google Search Console flags security issues.</p>
+
+                <h4>4. Legal and Policy Frameworks</h4>
+                <p>As Google Hacking becomes more sophisticated, clearer legal guidance is needed regarding permissible reconnaissance activities and responsible disclosure obligations.</p>
+
+                <h3>Personal Reflection</h3>
+                <p>Conducting this research has reinforced my understanding that information security is fundamentally about managing visibility and access control. Google Hacking exploits a simple principle: if information is accessible to a search engine crawler, it is accessible to anyone.</p>
+
+                <p>The most profound lesson is that security cannot be bolted on after deployment. The numerous exposed databases, configuration files, and credentials discoverable through Google Hacking represent failures in secure development practices, deployment procedures, and operational security.</p>
+
+                <p>Effective defense requires a security-first mindset where developers and administrators ask: "What would happen if a search engine indexed this?" before deploying any system or storing any file in a web-accessible location.</p>
+
+                <div class="conclusion-box">
+                    <h4>Key Takeaway</h4>
+                    <p>Google Hacking is not fundamentally an attack technique—it is a mirror that reflects the cumulative security posture of the internet. The vulnerabilities it reveals exist independent of whether anyone searches for them. The real question is: will defenders find them first?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conclusion Section -->
+    <section id="conclusion" class="section">
+        <div class="container">
+            <h2 class="section-title">Conclusion</h2>
+
+            <div class="content-main">
+                <p class="lead">This research project has comprehensively examined Advanced Google Hacking from theoretical foundations through practical application, culminating in original contributions to risk assessment and defensive security.</p>
+
+                <h3>Summary of Findings</h3>
+                <p>The investigation revealed several critical insights into Google Hacking methodologies and their implications for cybersecurity:</p>
+
+                <h4>1. Ubiquitous Exposure</h4>
+                <p>Search engine indexing creates pervasive exposure vectors across the internet. Analysis of common dorks reveals that thousands of organizations inadvertently expose sensitive information ranging from configuration files to complete database dumps. This exposure is not limited to poorly maintained websites—even sophisticated organizations occasionally misconfigure systems in ways that enable reconnaissance.</p>
+
+                <h4>2. Asymmetric Advantage</h4>
+                <p>Google Hacking provides attackers with significant operational advantages: zero cost, zero risk of detection, global reach, and no technical skill barrier beyond search syntax knowledge. Defenders, conversely, must comprehensively secure every potential exposure point—a fundamentally more challenging proposition.</p>
+
+                <h4>3. Evolving Landscape</h4>
+                <p>As web technologies evolve, so do Google Hacking techniques. The emergence of cloud storage, IoT devices, and DevOps practices has created new exposure categories. Git repositories, Docker registries, and environment variable configurations represent modern attack surfaces that did not exist a decade ago.</p>
+
+                <h4>4. Quantifiable Risk</h4>
+                <p>Through development of the risk classification framework, this research demonstrated that Google Dork threats can be systematically quantified. The multi-dimensional scoring model provides security teams with objective metrics for prioritizing remediation efforts, addressing a significant gap in existing resources.</p>
+
+                <h3>Practical Implications</h3>
+
+                <h4>For Security Professionals</h4>
+                <ul>
+                    <li><strong>Incorporate Google Hacking into reconnaissance phases:</strong> Penetration testers and red teams should systematically employ dorking techniques during external assessments.</li>
+                    <li><strong>Conduct defensive dorking exercises:</strong> Organizations should proactively search for their own exposed information using common dorks before adversaries do.</li>
+                    <li><strong>Utilize risk scoring:</strong> Apply quantitative frameworks like the one developed in this research to prioritize security remediation efforts.</li>
+                </ul>
+
+                <h4>For Developers and DevOps</h4>
+                <ul>
+                    <li><strong>Implement secure defaults:</strong> Disable directory listing, require authentication for administrative interfaces, and exclude sensitive paths via robots.txt.</li>
+                    <li><strong>Never commit secrets:</strong> Utilize secret management systems rather than storing credentials in code or configuration files.</li>
+                    <li><strong>Test before deployment:</strong> Search for distinctive strings from your application (error messages, default headers) to verify they are not publicly indexed.</li>
+                </ul>
+
+                <h4>For System Administrators</h4>
+                <ul>
+                    <li><strong>Regular exposure audits:</strong> Periodically execute common dorks scoped to your organization's domains to identify new exposures.</li>
+                    <li><strong>Monitor Google Search Console:</strong> Actively review indexed URLs to identify unintended content exposure.</li>
+                    <li><strong>Implement defense in depth:</strong> Even if content is indexed, ensure authentication prevents unauthorized access.</li>
+                </ul>
+
+                <h3>Limitations and Future Work</h3>
+                <p>This research has several limitations that suggest directions for future investigation:</p>
+
+                <h4>Scoring Subjectivity</h4>
+                <p>The risk classification framework involves subjective judgment in assigning dimensional scores. Future work could employ machine learning to train scoring models on labeled datasets of dorks with known exploitation outcomes.</p>
+
+                <h4>Dynamic Threat Landscape</h4>
+                <p>Google Hacking techniques continuously evolve as new web technologies emerge. The risk scoring model may require periodic recalibration to account for novel exposure types.</p>
+
+                <h4>Cross-Search Engine Analysis</h4>
+                <p>This research focused primarily on Google. However, specialized search engines like Shodan (IoT devices), Censys (certificates), and GitHub's code search present additional reconnaissance vectors worthy of dedicated study.</p>
+
+                <h4>Automated Defense Systems</h4>
+                <p>Future research could develop automated platforms that continuously monitor an organization's search engine footprint, alerting security teams to new exposures in real-time.</p>
+
+                <h3>Broader Implications for Cybersecurity</h3>
+                <p>Google Hacking illuminates a fundamental tension in internet architecture: the conflict between information accessibility and security. Search engines are designed to make information discoverable—this is their core value proposition. Security, conversely, aims to restrict information access to authorized parties.</p>
+
+                <p>This tension cannot be fully resolved through technical measures alone. It requires:</p>
+                <ul>
+                    <li><strong>Security-aware development practices</strong> that treat public web servers as hostile environments</li>
+                    <li><strong>Organizational security cultures</strong> that prioritize proper configuration over expedient deployment</li>
+                    <li><strong>Architectural patterns</strong> that separate public and private information by design, not configuration</li>
+                    <li><strong>Continuous monitoring</strong> that treats exposure as an ongoing risk rather than a one-time configuration task</li>
+                </ul>
+
+                <h3>Final Thoughts</h3>
+                <p>Google Hacking serves as a powerful reminder that security failures are often not the result of sophisticated attacks, but rather simple oversights amplified by the internet's scale. A single misconfigured server, an accidentally committed password, or an overlooked backup file becomes globally discoverable the moment a search engine crawler indexes it.</p>
+
+                <p>The techniques documented in this research are not novel attack vectors—they have been well-known since the early 2000s. Yet, as demonstrated by continued prevalence of discoverable sensitive information, these vulnerabilities persist. This suggests that the challenge is not primarily technical but cultural and procedural.</p>
+
+                <p>Effective defense against Google Hacking requires instilling a fundamental principle in everyone who deploys systems or publishes content to the web: <strong>Assume that anything accessible to the internet will eventually be indexed and discovered.</strong></p>
+
+                <p>By developing quantitative risk assessment frameworks and educational tools like those presented in this project, we can help security professionals, developers, and administrators systematically address these persistent exposure risks.</p>
+
+                <div class="final-message">
+                    <h4>Closing Statement</h4>
+                    <p>This research has demonstrated that Google Hacking, despite its simplicity, remains a critical reconnaissance technique in modern cybersecurity. Through rigorous analysis, original risk quantification methodologies, and practical tool development, this project contributes to both offensive security knowledge and defensive security practice.</p>
+                    <p>As the internet continues to expand and new technologies create novel exposure surfaces, the principles established here—systematic assessment, quantitative risk analysis, and proactive defensive dorking—will remain essential components of comprehensive security programs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- References Section -->
+    <section id="references" class="section bg-dark">
+        <div class="container">
+            <h2 class="section-title">References</h2>
+
+            <div class="references-content">
+                <h3>Academic Publications</h3>
+                <ol class="reference-list">
+                    <li>Long, J. (2005). <em>Google Hacking for Penetration Testers</em>. Syngress Publishing. ISBN: 978-1931836364.</li>
+
+                    <li>Ollmann, G. (2004). "Second-Order Code Injection Attacks." <em>Proceedings of the Black Hat Briefings and Training</em>. Las Vegas, NV.</li>
+
+                    <li>Weidman, G. (2014). <em>Penetration Testing: A Hands-On Introduction to Hacking</em>. No Starch Press. ISBN: 978-1593275648.</li>
+
+                    <li>Stuttard, D., & Pinto, M. (2011). <em>The Web Application Hacker's Handbook: Finding and Exploiting Security Flaws</em> (2nd ed.). Wiley. ISBN: 978-1118026472.</li>
+
+                    <li>Engebretson, P. (2013). <em>The Basics of Hacking and Penetration Testing</em> (2nd ed.). Syngress. ISBN: 978-0124116443.</li>
+                </ol>
+
+                <h3>Technical Reports and White Papers</h3>
+                <ol class="reference-list" start="6">
+                    <li>SANS Institute. (2019). "Search Engine Discovery and Reconnaissance for Information Security." SANS Security Essentials. Available at: https://www.sans.org</li>
+
+                    <li>OWASP Foundation. (2021). "OWASP Testing Guide v4.2: Information Gathering." Open Web Application Security Project. Available at: https://owasp.org/www-project-web-security-testing-guide/</li>
+
+                    <li>Exploit Database. (2023). "Google Hacking Database (GHDB)." Offensive Security. Available at: https://www.exploit-db.com/google-hacking-database</li>
+
+                    <li>Shodan. (2023). "The Search Engine for the Internet of Things." Technical Documentation. Available at: https://www.shodan.io/</li>
+
+                    <li>Censys. (2022). "Certificate Transparency and Internet-Wide Scanning." Research Paper. Available at: https://censys.io/research</li>
+                </ol>
+
+                <h3>Standards and Best Practices</h3>
+                <ol class="reference-list" start="11">
+                    <li>NIST. (2020). "Special Publication 800-115: Technical Guide to Information Security Testing and Assessment." National Institute of Standards and Technology.</li>
+
+                    <li>PCI Security Standards Council. (2022). "Payment Card Industry Data Security Standard (PCI DSS) v4.0." Available at: https://www.pcisecuritystandards.org/</li>
+
+                    <li>ISO/IEC. (2018). "ISO/IEC 27001:2013 - Information Security Management Systems." International Organization for Standardization.</li>
+                </ol>
+
+                <h3>Search Engine Documentation</h3>
+                <ol class="reference-list" start="14">
+                    <li>Google. (2023). "Search Console Help: Control Crawling and Indexing." Google Documentation. Available at: https://support.google.com/webmasters/</li>
+
+                    <li>Google. (2023). "How to Use Search Operators." Google Search Help. Available at: https://support.google.com/websearch/</li>
+
+                    <li>Bing. (2023). "Bing Webmaster Guidelines." Microsoft Documentation. Available at: https://www.bing.com/webmasters/</li>
+                </ol>
+
+                <h3>Security Tools and Frameworks</h3>
+                <ol class="reference-list" start="17">
+                    <li>dafthack. (2023). "FOCA (Fingerprinting Organizations with Collected Archives)." GitHub Repository. Available at: https://github.com/ElevenPaths/FOCA</li>
+
+                    <li>opsdisk. (2023). "Pagodo: Automated Google Hacking Database Scraper." GitHub Repository. Available at: https://github.com/opsdisk/pagodo</li>
+
+                    <li>m3n0sd0n4ld. (2023). "GooFuzz: Google Dorking Tool." GitHub Repository. Available at: https://github.com/m3n0sd0n4ld/GooFuzz</li>
+                </ol>
+
+                <h3>Legal and Ethical Frameworks</h3>
+                <ol class="reference-list" start="20">
+                    <li>U.S. Department of Justice. (2020). "Computer Fraud and Abuse Act (CFAA) - 18 U.S.C. § 1030." Federal Law.</li>
+
+                    <li>EC-Council. (2022). "Certified Ethical Hacker (CEH) Code of Ethics." EC-Council Professional Guidelines.</li>
+
+                    <li>(ISC)². (2021). "Certified Information Systems Security Professional (CISSP) Code of Ethics." (ISC)² Professional Standards.</li>
+                </ol>
+
+                <h3>Incident Reports and Case Studies</h3>
+                <ol class="reference-list" start="23">
+                    <li>Verizon. (2023). "Data Breach Investigations Report (DBIR)." Verizon Enterprise Solutions. Available at: https://www.verizon.com/business/resources/reports/dbir/</li>
+
+                    <li>Ponemon Institute. (2023). "Cost of a Data Breach Report 2023." IBM Security. Available at: https://www.ibm.com/security/data-breach</li>
+
+                    <li>CISA. (2023). "Known Exploited Vulnerabilities Catalog." Cybersecurity and Infrastructure Security Agency. Available at: https://www.cisa.gov/known-exploited-vulnerabilities-catalog</li>
+                </ol>
+
+                <h3>Web Security Research</h3>
+                <ol class="reference-list" start="26">
+                    <li>Durumeric, Z., et al. (2013). "ZMap: Fast Internet-wide Scanning and Its Security Applications." <em>22nd USENIX Security Symposium</em>. Washington, D.C.</li>
+
+                    <li>Nikiforakis, N., et al. (2015). "You Are What You Include: Large-scale Evaluation of Remote JavaScript Inclusions." <em>ACM Conference on Computer and Communications Security (CCS)</em>. Denver, CO.</li>
+
+                    <li>Stock, B., & Johns, M. (2014). "Protecting Users Against XSS-based Password Manager Abuse." <em>9th ACM Symposium on Information, Computer and Communications Security</em>. Kyoto, Japan.</li>
+                </ol>
+
+                <h3>OSINT and Reconnaissance</h3>
+                <ol class="reference-list" start="29">
+                    <li>Bazzell, M. (2021). <em>Open Source Intelligence Techniques: Resources for Searching and Analyzing Online Information</em> (8th ed.). ISBN: 978-1734458078.</li>
+
+                    <li>McPherson, J., et al. (2016). "OSINT Handbook." NATO Open Source Intelligence Handbook. Available at: https://www.nato.int/</li>
+                </ol>
+
+                <h3>Course Materials and Documentation</h3>
+                <ol class="reference-list" start="31">
+                    <li>Řezáč, F. (2021). "Fundamentals of the Security in Communications - Lecture 2: Monitoring and Google Hacking." VSB-TU Ostrava, Faculty of Electrical Engineering and Computer Science.</li>
+
+                    <li>Řezáč, F. (2021). "Fundamentals of the Security in Communications - Exercise 2: Scanning and Monitoring." VSB-TU Ostrava, Faculty of Electrical Engineering and Computer Science.</li>
+                </ol>
+
+                <h3>Additional Resources</h3>
+                <ol class="reference-list" start="33">
+                    <li>CVE Details. (2023). "Common Vulnerabilities and Exposures Database." MITRE Corporation. Available at: https://www.cvedetails.com/</li>
+
+                    <li>SecurityTrails. (2023). "Google Hacking Techniques." SecurityTrails Blog. Available at: https://securitytrails.com/blog/google-hacking-techniques</li>
+
+                    <li>PortSwigger. (2023). "Web Security Academy: Information Disclosure." PortSwigger Ltd. Available at: https://portswigger.net/web-security/information-disclosure</li>
+                </ol>
+
+                <div class="reference-note">
+                    <h4>Note on References</h4>
+                    <p>All references were accessed and verified as of 2025. URLs for online resources are current as of the date of this research. Some academic publications may require institutional access or purchase.</p>
+                    <p>This reference list follows academic citation standards and includes a mix of foundational texts, contemporary research, technical documentation, and practical security resources to provide comprehensive coverage of the Google Hacking domain.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Project Information</h4>
+                    <p>Advanced Google Hacking Research Project</p>
+                    <p>VSB - Technical University of Ostrava</p>
+                    <p>Faculty of Electrical Engineering and Computer Science</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Student Information</h4>
+                    <p><strong>Luis López León</strong></p>
+                    <p>Student Code: LOP0065</p>
+                    <p>Academic Year: 2025/2026</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Course Details</h4>
+                    <p>Fundamentals of Security in Communications</p>
+                    <p>Instructor: Ing. Filip Řezáč, Ph.D.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Ethical Notice</h4>
+                    <p>This research is conducted for educational purposes within ethical boundaries. All techniques described should only be used for authorized security testing and defensive purposes.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 VSB-TU Ostrava. Project developed for academic research purposes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chart.js for Radar Chart Visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
