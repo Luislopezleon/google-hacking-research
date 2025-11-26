@@ -11,7 +11,9 @@
       "Bash(winget install:*)",
       "Bash(git branch:*)",
       "Bash(git remote add:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nRefactor: Interactive Dork Library implementation\n\nMajor changes:\n- Replaced AI-powered generator with curated library of 24 real Google Dorks\n- Organized dorks into 8 categories (Database, Credentials, Config, Admin, Directory, Documents, IoT, Cloud)\n- Implemented interactive analysis panel with detailed risk assessment\n- Added category filtering system\n- Enhanced user experience with real dork examples and security recommendations\n- Removed Chart.js dependency (simplified implementation)\n- Updated tool section from AI generator to Security Lab interface\n\nFeatures:\n- 24 production-ready Google Dorks with real-world risk scores\n- Category-based filtering system\n- Sliding analysis panel for detailed dork examination\n- Sample results for each dork\n- Comprehensive security recommendations\n- Professional risk scoring (Critical/High/Medium/Low)\n\nThis provides a more educational and practical approach to Google Hacking research.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
