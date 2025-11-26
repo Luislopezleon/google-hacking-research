@@ -254,8 +254,9 @@ filetype:env "DB_PASSWORD"
 
 ## 👨‍🎓 Author Information
 
-**Student**: Luis López León
-**Student Code**: LOP0065
+**Students**:
+- Luis López León (Student Code: LOP0065)
+- José Ramón Rodríguez Corral (Student ID: ROD0090)
 
 **Institution**:
 VSB - Technical University of Ostrava
