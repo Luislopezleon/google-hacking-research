@@ -1034,6 +1034,41 @@ function initAccordions() {
     });
 }
 
+// ========== Mobile Menu Functions ==========
+function toggleMobileMenu() {
+    const navMenu = document.getElementById('navMenu');
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+
+    navMenu.classList.toggle('active');
+    menuToggle.classList.toggle('active');
+
+    // Prevent body scroll when menu is open
+    if (navMenu.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = '';
+    }
+}
+
+function closeMobileMenu() {
+    const navMenu = document.getElementById('navMenu');
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+
+    navMenu.classList.remove('active');
+    menuToggle.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(event) {
+    const navMenu = document.getElementById('navMenu');
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+
+    if (navMenu && menuToggle && !navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+        closeMobileMenu();
+    }
+});
+
 // ========== Console Message ==========
 console.log('%c Google Dork Security Lab ', 'background: #6366f1; color: white; font-size: 16px; font-weight: bold; padding: 10px;');
 console.log('%c VSB-TU Ostrava | 2025 ', 'background: #00d9ff; color: #0a0e1a; font-size: 12px; padding: 5px;');

@@ -15,14 +15,19 @@
                 <span class="logo-icon">&#x1F50D;</span>
                 <span class="logo-text">Google Hacking Research</span>
             </div>
-            <ul class="nav-menu">
-                <li><a href="#intro">Introduction</a></li>
-                <li><a href="#state-of-art">State of Art</a></li>
-                <li><a href="#description">Description</a></li>
-                <li><a href="#research">Research</a></li>
-                <li><a href="#tool">Interactive Tool</a></li>
-                <li><a href="#opinion">Contribution</a></li>
-                <li><a href="#conclusion">Conclusion</a></li>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#intro" onclick="closeMobileMenu()">Introduction</a></li>
+                <li><a href="#state-of-art" onclick="closeMobileMenu()">State of Art</a></li>
+                <li><a href="#description" onclick="closeMobileMenu()">Description</a></li>
+                <li><a href="#research" onclick="closeMobileMenu()">Research</a></li>
+                <li><a href="#tool" onclick="closeMobileMenu()">Interactive Tool</a></li>
+                <li><a href="#opinion" onclick="closeMobileMenu()">Contribution</a></li>
+                <li><a href="#conclusion" onclick="closeMobileMenu()">Conclusion</a></li>
             </ul>
         </div>
     </nav>
