@@ -5,7 +5,13 @@
       "Bash(python -m http.server:*)",
       "Bash(dir:*)",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nInitial commit: Advanced Google Hacking Research Project\n\nThis project is an educational web application for VSB-TU Ostrava that demonstrates:\n- Google Hacking techniques and methodologies\n- AI-Powered Google Dork Generator with natural language processing\n- Real-time risk assessment with 5-factor analysis\n- Interactive radar chart visualization using Chart.js\n- Risk scoring system for security vulnerability assessment\n- Sample search results and security recommendations\n- Generation history with localStorage persistence\n\nFeatures:\n- Intelligent dork generation from plain English descriptions\n- Animated risk score visualization\n- Responsive design for all devices\n- Comprehensive security documentation\n- Interactive accordion components\n\n🤖 Generated with Claude Code\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(gh --version:*)",
+      "Bash(winget install:*)",
+      "Bash(git branch:*)",
+      "Bash(git remote add:*)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []

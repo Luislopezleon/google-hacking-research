@@ -1162,125 +1162,91 @@ Disallow: /logs/</code></pre>
     <!-- Interactive Tool Section -->
     <section id="tool" class="section">
         <div class="container">
-            <h2 class="section-title">AI-Powered Google Dork Generator</h2>
-            <p class="tool-intro">Describe what you're looking for in plain English, and our intelligent system will generate optimized Google Dorks with real-time risk assessment and visual analytics.</p>
+            <h2 class="section-title">Google Dork Security Lab</h2>
+            <p class="tool-intro">Interactive platform to explore, analyze, and understand Google Hacking techniques. Experiment with real dorks and see their security implications in real-time.</p>
 
-            <div class="ai-tool-container">
-                <!-- AI Input Section -->
-                <div class="ai-input-section">
-                    <div class="ai-header">
-                        <span class="ai-icon">🤖</span>
-                        <h3>Intelligent Dork Generator</h3>
-                    </div>
+            <!-- Tab Navigation -->
+            <div class="lab-header-info">
+                <h3>📚 Interactive Dork Library</h3>
+                <p>Explore 24 real Google Dorks organized by category. Click on any dork to see detailed analysis, risk assessment, and security recommendations.</p>
+            </div>
 
-                    <div class="input-wrapper">
-                        <textarea
-                            id="aiInput"
-                            class="ai-input"
-                            placeholder="Describe what you want to find in natural language...&#10;&#10;Examples:&#10;• Find exposed MySQL databases with passwords&#10;• Search for admin login pages on government sites&#10;• Locate PDF files containing confidential information&#10;• Discover publicly accessible security cameras&#10;• Find environment configuration files with API keys"
-                        ></textarea>
+            <!-- Library Content -->
+            <div class="lab-content">
+                <div class="library-layout">
 
-                        <div class="quick-examples">
-                            <span class="examples-label">Quick Examples:</span>
-                            <button class="example-chip" onclick="setAIInput('Find database backup files with passwords')">Database Backups</button>
-                            <button class="example-chip" onclick="setAIInput('Search for exposed git repositories')">Git Repos</button>
-                            <button class="example-chip" onclick="setAIInput('Locate admin panels on PHP sites')">Admin Panels</button>
-                            <button class="example-chip" onclick="setAIInput('Find log files containing credentials')">Log Files</button>
-                        </div>
-
-                        <div class="ai-controls">
-                            <button class="btn-generate" onclick="generateDork()">
-                                <span class="btn-icon">✨</span>
-                                Generate Dork
+                    <!-- Categories Sidebar -->
+                    <div class="categories-sidebar">
+                        <h3>Categories</h3>
+                        <div class="category-filters">
+                            <button class="category-btn active" data-category="all" onclick="filterCategory('all')">
+                                <span class="cat-icon">🎯</span>
+                                <span>All Dorks</span>
+                                <span class="cat-count">24</span>
                             </button>
-                            <button class="btn-clear-ai" onclick="clearAI()">Clear</button>
-                        </div>
-                    </div>
-
-                    <!-- Generated Dork Display -->
-                    <div id="generatedDorkSection" class="generated-dork-section hidden">
-                        <div class="dork-output-header">
-                            <h4>Generated Google Dork</h4>
-                            <button class="btn-copy" onclick="copyDork()" title="Copy to clipboard">
-                                <span id="copyIcon">📋</span>
+                            <button class="category-btn" data-category="database" onclick="filterCategory('database')">
+                                <span class="cat-icon">💾</span>
+                                <span>Databases</span>
+                                <span class="cat-count">4</span>
+                            </button>
+                            <button class="category-btn" data-category="credentials" onclick="filterCategory('credentials')">
+                                <span class="cat-icon">🔑</span>
+                                <span>Credentials</span>
+                                <span class="cat-count">4</span>
+                            </button>
+                            <button class="category-btn" data-category="config" onclick="filterCategory('config')">
+                                <span class="cat-icon">⚙️</span>
+                                <span>Config Files</span>
+                                <span class="cat-count">3</span>
+                            </button>
+                            <button class="category-btn" data-category="admin" onclick="filterCategory('admin')">
+                                <span class="cat-icon">🔓</span>
+                                <span>Admin Panels</span>
+                                <span class="cat-count">3</span>
+                            </button>
+                            <button class="category-btn" data-category="directory" onclick="filterCategory('directory')">
+                                <span class="cat-icon">📁</span>
+                                <span>Directories</span>
+                                <span class="cat-count">3</span>
+                            </button>
+                            <button class="category-btn" data-category="documents" onclick="filterCategory('documents')">
+                                <span class="cat-icon">📄</span>
+                                <span>Documents</span>
+                                <span class="cat-count">3</span>
+                            </button>
+                            <button class="category-btn" data-category="iot" onclick="filterCategory('iot')">
+                                <span class="cat-icon">📹</span>
+                                <span>IoT Devices</span>
+                                <span class="cat-count">2</span>
+                            </button>
+                            <button class="category-btn" data-category="cloud" onclick="filterCategory('cloud')">
+                                <span class="cat-icon">☁️</span>
+                                <span>Cloud Storage</span>
+                                <span class="cat-count">2</span>
                             </button>
                         </div>
-                        <div class="dork-output">
-                            <code id="generatedDork"></code>
-                        </div>
-                        <div class="dork-explanation">
-                            <span class="explain-label">How it works:</span>
-                            <p id="dorkExplanation"></p>
-                        </div>
-                        <div class="refine-section">
-                            <span class="refine-label">Refine your search:</span>
-                            <div class="refine-buttons" id="refineButtons"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Analysis Results Section -->
-                <div id="aiResults" class="ai-results-section hidden">
-                    <!-- Risk Score Circle and Radar Chart -->
-                    <div class="dual-visual">
-                        <div class="risk-circle-container">
-                            <h4>Overall Risk</h4>
-                            <div class="score-circle-large" id="scoreCircleAI">
-                                <span id="scoreValueAI" class="score-value-large">0.0</span>
-                                <span class="score-max-large">/4.0</span>
-                            </div>
-                            <div class="score-label-large" id="scoreLabelAI">Analyzing...</div>
-                        </div>
-
-                        <div class="radar-chart-container">
-                            <h4>Risk Factor Visualization</h4>
-                            <canvas id="riskRadarChart"></canvas>
-                        </div>
                     </div>
 
-                    <!-- Simulated Results -->
-                    <div class="ai-simulated-results">
-                        <h4>Estimated Impact</h4>
-                        <div class="impact-stats">
-                            <div class="stat-card">
-                                <div class="stat-icon">🔍</div>
-                                <div class="stat-value" id="estimatedResults">~0</div>
-                                <div class="stat-label">Potential Results</div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-icon">⚠️</div>
-                                <div class="stat-value" id="affectedSites">~0</div>
-                                <div class="stat-label">Affected Sites</div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-icon">🌍</div>
-                                <div class="stat-value" id="globalReach">-</div>
-                                <div class="stat-label">Global Reach</div>
-                            </div>
-                        </div>
-
-                        <div class="result-preview">
-                            <h5>Sample Results Preview</h5>
-                            <div id="sampleResults" class="sample-results-list"></div>
-                        </div>
+                    <!-- Dorks List -->
+                    <div class="dorks-list" id="dorksList">
+                        <!-- Dorks will be generated by JavaScript -->
                     </div>
 
-                    <!-- Recommendations -->
-                    <div class="ai-recommendations">
-                        <h4>Security Recommendations</h4>
-                        <div id="aiRecommendationsList" class="ai-rec-list"></div>
-                    </div>
-
-                    <!-- Generation History -->
-                    <div class="generation-history">
-                        <div class="history-header">
-                            <h4>Recent Generations</h4>
-                            <button class="btn-clear-history" onclick="clearHistory()">Clear History</button>
-                        </div>
-                        <div id="historyList" class="history-list"></div>
-                    </div>
                 </div>
             </div>
+
+            <!-- Analysis Panel (Sidebar that opens) -->
+            <div id="analysisPanel" class="analysis-panel">
+                <div class="panel-header">
+                    <h3 id="panelTitle">Dork Analysis</h3>
+                    <button class="panel-close" onclick="closeAnalysisPanel()">✕</button>
+                </div>
+                <div class="panel-content" id="panelContent">
+                    <!-- Content populated by JavaScript -->
+                </div>
+            </div>
+            <div id="panelOverlay" class="panel-overlay" onclick="closeAnalysisPanel()"></div>
+
         </div>
     </section>
 
@@ -1637,8 +1603,6 @@ Disallow: /logs/</code></pre>
         </div>
     </footer>
 
-    <!-- Chart.js for Radar Chart Visualization -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
