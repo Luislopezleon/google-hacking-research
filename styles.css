@@ -216,7 +216,15 @@ pre code {
 }
 
 .logo-icon {
-    font-size: 1.5rem;
+    width: 32px;
+    height: 32px;
+    color: var(--primary-color);
+    transition: all var(--transition-base);
+}
+
+.logo-icon:hover {
+    color: var(--primary-dark);
+    transform: scale(1.05);
 }
 
 .nav-menu {
